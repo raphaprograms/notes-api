@@ -20,6 +20,8 @@ app.use(express.json()); // body parser
 
 // ==== Routes =============
 app.use('/api/user', require('./routes/userRoutes'));
+app.use('/api/note', require('./routes/noteRoutes'));
+
 
 // Use this route to set up the API documentation
 app.get('/', (req, res) => {
