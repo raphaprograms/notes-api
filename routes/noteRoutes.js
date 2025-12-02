@@ -42,7 +42,11 @@ router.put('/:id', async (req, res) => {
   // This needs an authorization check
   const noteToUpdate = await Note.findById(req.params.id)
 
-       if(req.user._id !== noteToUpdate.user.toString()) {
+    if (!noteToUpdate) {
+      return res.status(404).json({ message: 'No note found with this id!' });
+    }
+
+    if(req.user._id !== noteToUpdate.user.toString()) {
       
       return res.status(403).json({ message: 'This is not your note!' });
     }
